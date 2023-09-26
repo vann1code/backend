@@ -28,6 +28,9 @@ public class WebController {
     @PostMapping("/upload")
     public ResponseEntity<ApiResponse> uploadFiles(@RequestParam("file") MultipartFile file) {
         try {
+
+            processamentoServico.processFile(file);
+
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(file.getInputStream());

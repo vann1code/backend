@@ -16,14 +16,14 @@ public class Agentes {
 
     @OneToMany(mappedBy = "agentes", cascade = CascadeType.ALL)
     @XmlElement(name = "agente")
-    private List<Agente> agente;
+    private List<Agente> agentes;
 
 
     public List<Agente> getAgente() {
-        return agente;
+        return agentes;
     }
 
-    public void setAgente(List<Agente> agente) {
-        this.agente = agente;
+    public void setAgente(List<Agente> agentes) {
+        this.agentes = agentes;
     }
 }
