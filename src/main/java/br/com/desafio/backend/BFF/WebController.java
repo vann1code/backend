@@ -1,5 +1,6 @@
 package br.com.desafio.backend.BFF;
 
+import br.com.desafio.backend.DAO.AgentesDAO;
 import br.com.desafio.backend.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +41,9 @@ public class WebController {
                }
            }
         }
+
+        AgentesDAO agentesDao = new AgentesDAO();
+        agentesDao.salvarAgentes(agentes);
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
