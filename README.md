@@ -2,5 +2,5 @@
 
 Tecnologias:
 Java 17
-SpringBoot 3
-Maven 2
+SpringBoot 2
+Maven 3
