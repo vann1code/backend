@@ -5,9 +5,10 @@ import br.com.desafio.backend.Model.AgenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class AgenteService {
-
     private final AgenteRepository agenteRepository;
 
     @Autowired
@@ -15,8 +16,9 @@ public class AgenteService {
         this.agenteRepository = agenteRepository;
     }
 
-    public Agente salvarAgente(Agente agente) {
-        return agenteRepository.save(agente);
+    @Transactional
+    public void salvarAgente(Agente agente) {
+        agenteRepository.save(agente);
     }
 
 }

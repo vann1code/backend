@@ -1,4 +1,5 @@
 package br.com.desafio.backend.Model;
+import br.com.desafio.backend.DAO.AgentesDAO;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +22,9 @@ public class ProcessamentoServico {
                     }
                 }
             }
+
+            AgentesDAO agentesDao = new AgentesDAO();
+            agentesDao.salvarAgentes(agentes);
 
         } catch (Exception ignored) {
         }

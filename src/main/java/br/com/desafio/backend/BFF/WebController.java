@@ -32,7 +32,6 @@ public class WebController {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(file.getInputStream());
 
-            //Extraindo Código do Agente (XML)
             List<String> codigos = ExtrairCodigos.extrairCodigos(document);
             System.out.println("Agentes recebidos - Códigos: " + codigos);
 

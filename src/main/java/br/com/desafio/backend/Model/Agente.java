@@ -2,10 +2,9 @@ package br.com.desafio.backend.Model;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 @Entity
-@Table(name = "Agentes")
+@Table(name = "Agente")
 public class Agente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
