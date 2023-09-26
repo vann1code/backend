@@ -1,14 +1,13 @@
 package br.com.desafio.backend.BFF;
 
-import br.com.desafio.backend.Model.ExtrairCodigos;
-import br.com.desafio.backend.Model.ExtrairDatas;
+import br.com.desafio.backend.Model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import br.com.desafio.backend.Model.ApiResponse;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
@@ -26,8 +25,21 @@ import java.util.List;
 @CrossOrigin("*")
 
 public class WebController {
+
     @PostMapping("/upload")
     public ResponseEntity<ApiResponse> uploadFiles(@RequestParam("file") MultipartFile file) throws ParserConfigurationException, IOException, SAXException {
+
+        Agentes agentes = new ManipularXml().convertXmlToObject(file);
+
+        if(agentes != null){
+           for(Agente agente : agentes.getAgente()){
+               for(Regiao regiao : agente.getRegiao()){
+                   List<Double> precoMedio = regiao.getPrecoMedio();
+                   for(int i = 0; i < precoMedio.size(); i ++)
+                       precoMedio.set(i, 0.0);
+               }
+           }
+        }
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
