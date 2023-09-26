@@ -1,11 +1,23 @@
 package br.com.desafio.backend.Model;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
-
+@Entity
+@Table(name = "Agentes")
 public class Agente {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "agentes_id")
+    private Agentes agentes;
+    @Column(name = "codigo")
     private int codigo;
+    @Column(name = "data")
     private String data;
+    @OneToMany(mappedBy = "agente", cascade = CascadeType.ALL)
     private List<Regiao> regiao;
 
     @XmlElement
