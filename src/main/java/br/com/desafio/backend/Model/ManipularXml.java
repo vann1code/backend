@@ -17,15 +17,7 @@ public class ManipularXml {
             String xml = new String(file.getBytes(), "UTF-8");
             JAXBContext jaxbContext = JAXBContext.newInstance(Agentes.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-            // Desserializa o XML em um objeto Java
             agentes = (Agentes) unmarshaller.unmarshal(new StringReader(xml));
-
-            // Agora você tem o conteúdo do XML como objetos Java
-            System.out.println(agentes.getAgente().get(0).getCodigo());
-            System.out.println(agentes.getAgente().get(0).getData());
-            // Acesse outras propriedades conforme necessário
-
         } catch (JAXBException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
